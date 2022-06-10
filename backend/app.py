@@ -43,8 +43,8 @@ def generate_images_api():
         
     js['images'] = generated_images
 
-    print(f"Created {num_images} images from text prompt [{text_prompt}]")
-    return jsonify(generated_images)
+    print(f"Created {num_images} images from text prompt [{text_prompt}] ({js})")
+    return jsonify(js)
 
 
 @app.route("/", methods=["GET"])
