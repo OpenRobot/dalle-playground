@@ -23,6 +23,9 @@ def generate_images_api():
     except KeyError:
         return jsonify({'error': {'code': 400}, 'message': 'Missing "text" and/or "num_images" keys in JSON data'})
     
+    if num_images > 10:
+        return jsonify({'error': {'code': 400}, 'message': '"num_images" cannot go over the value of "10"'})
+    
     start = time.perf_counter()
     generated_imgs = dalle_model.generate_images(text_prompt, num_images)
     end = time.perf_counter()
